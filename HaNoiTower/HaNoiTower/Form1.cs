@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace HaNoiTowerGame
 {
-    public partial class Form1 : Form
+    public partial class HaNoiTowerGame : Form
     {
         TimeSpan time;
         int moveCount;
@@ -18,7 +18,7 @@ namespace HaNoiTowerGame
         //MyStack<PictureBox> diskA, diskB, diskC;
 
         
-        public Form1()
+        public HaNoiTowerGame()
         {
             InitializeComponent();
             disks = new PictureBox[] {disk1, disk2, disk3, disk4, disk5, disk6, disk7, disk8};

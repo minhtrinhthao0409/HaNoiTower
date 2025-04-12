@@ -1,6 +1,6 @@
 ﻿namespace HaNoiTowerGame
 {
-    partial class Form1
+    partial class HaNoiTowerGame
     {
         /// <summary>
         /// Required designer variable.
@@ -313,7 +313,7 @@
             this.showRule.UseVisualStyleBackColor = true;
             this.showRule.Click += new System.EventHandler(this.showRule_Click);
             // 
-            // Form1
+            // HaNoiTowerGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -344,7 +344,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "HaNoiTowerGame";
             this.Text = "Tháp Hà Nội";
             ((System.ComponentModel.ISupportInitialize)(this.disk8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.disk7)).EndInit();
