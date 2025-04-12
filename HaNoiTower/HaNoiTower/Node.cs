@@ -1,8 +1,10 @@
 ﻿namespace HaNoiTowerGame
 {
-    public class Node
+    public class Node<T>
     {
-        public object data;
-        public Node next;
+        public T data;
+        public Node<T> next;
     }
+
+
 }

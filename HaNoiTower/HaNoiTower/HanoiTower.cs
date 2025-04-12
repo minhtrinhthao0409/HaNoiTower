@@ -1,6 +1,9 @@
-﻿namespace HaNoiTowerGame
+﻿using System.Windows.Forms;
+using System;
+
+namespace HaNoiTowerGame
 {
-    public class HanoiTower : MyStack
+    public class HanoiTower : MyStack<PictureBox>
     {
         public string Name { get; set; }
 
@@ -9,26 +12,46 @@
             this.Name = name;
         }
 
-        public bool AddDisk(int size)
+        public bool AddDisk(PictureBox disk)
         {
-            object topDisk = this.Peek();
-            if (topDisk != null && (int)topDisk <= size)
+            if (!this.IsEmpty())
             {
-                return false;
+                PictureBox topDisk = this.Peek();
+
+                // So sánh chiều rộng để xác định kích thước đĩa
+                if (topDisk.Width <= disk.Width)
+                {
+                    return false;
+                }
             }
 
-            this.Push(size);
+            this.Push(disk);
             return true;
         }
 
-        public int? RemoveDisk()
+        public PictureBox RemoveDisk()
         {
-            object data = this.Pop();
-            if (data != null)
-                return (int)data;
-            else
+            if (this.IsEmpty())
                 return null;
-        }
-    }
 
+            return this.Pop();
+        }
+
+        public PictureBox PeekDisk()
+        {
+            return this.Peek();
+        }
+
+        //public void PrintTower()
+        //{
+        //    Console.WriteLine($"\n📦 Tower {Name}:");
+
+        //    PictureBox[] disks = this.ToArray();
+        //    for (int i = disks.Length - 1; i >= 0; i--)
+        //    {
+        //        Console.WriteLine($" - Disk width: {disks[i].Width}");
+        //    }
+
+        //}
+    }
 }

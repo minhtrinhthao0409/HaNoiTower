@@ -1,8 +1,8 @@
 ﻿namespace HaNoiTowerGame
 {
-    public class MyStack
+    public class MyStack<T>
     {
-        Node top;
+        private Node<T> top;
         private int count = 0;
 
         public bool IsEmpty()
@@ -10,35 +10,44 @@
             return top == null;
         }
 
-        public void Push(object data)
+        public void Push(T data)
         {
-            Node newNode = new Node { data = data, next = top };
+            Node<T> newNode = new Node<T> { data = data, next = top };
             top = newNode;
             count++;
         }
 
-        public object Pop()
+        public T Pop()
         {
-            if (IsEmpty())
-            {
-                return null;
-            }
-
-            object data = top.data;
+            if (IsEmpty()) return default;
+            T data = top.data;
             top = top.next;
-            if (count >= 0)
-                count--;
+            count--;
             return data;
         }
 
-        public object Peek()
+        public T Peek()
         {
-            if (IsEmpty()) return null;
+            if (IsEmpty()) return default;
             return top.data;
         }
+
         public int Count()
         {
             return count;
+        } 
+
+        public T[] ToArray()
+        {
+            T[] arr = new T[count];
+            Node<T> current = top;
+            int i = 0;
+            while (current != null)
+            {
+                arr[i++] = current.data;
+                current = current.next;
+            }
+            return arr;
         }
 
         public void Clear()
@@ -46,6 +55,7 @@
             top = null;
             count = 0;
         }
-
     }
+
 }
+

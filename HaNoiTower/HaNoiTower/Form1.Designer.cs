@@ -40,16 +40,16 @@
             this.disk3 = new System.Windows.Forms.PictureBox();
             this.disk2 = new System.Windows.Forms.PictureBox();
             this.disk1 = new System.Windows.Forms.PictureBox();
-            this.cotC = new System.Windows.Forms.PictureBox();
-            this.cotB = new System.Windows.Forms.PictureBox();
-            this.cotA = new System.Windows.Forms.PictureBox();
+            this.RodC = new System.Windows.Forms.PictureBox();
+            this.RodB = new System.Windows.Forms.PictureBox();
+            this.RodA = new System.Windows.Forms.PictureBox();
             this.lblTime = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblMove = new System.Windows.Forms.Label();
             this.level = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.btnPlay = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGiveUp = new System.Windows.Forms.Button();
             this.showRule = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.disk8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.disk7)).BeginInit();
@@ -59,9 +59,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.disk3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.disk2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.disk1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cotC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cotB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cotA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RodC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RodB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RodA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.level)).BeginInit();
             this.SuspendLayout();
             // 
@@ -167,7 +167,7 @@
             // disk2
             // 
             this.disk2.Image = global::HaNoiTower.Properties.Resources.disk_2;
-            this.disk2.Location = new System.Drawing.Point(60, 319);
+            this.disk2.Location = new System.Drawing.Point(59, 315);
             this.disk2.Name = "disk2";
             this.disk2.Size = new System.Drawing.Size(164, 25);
             this.disk2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -178,7 +178,7 @@
             // disk1
             // 
             this.disk1.Image = global::HaNoiTower.Properties.Resources.disk_1;
-            this.disk1.Location = new System.Drawing.Point(60, 337);
+            this.disk1.Location = new System.Drawing.Point(60, 335);
             this.disk1.Name = "disk1";
             this.disk1.Size = new System.Drawing.Size(164, 25);
             this.disk1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -186,35 +186,38 @@
             this.disk1.TabStop = false;
             this.disk1.Tag = "1";
             // 
-            // cotC
+            // RodC
             // 
-            this.cotC.Image = global::HaNoiTower.Properties.Resources.tower;
-            this.cotC.Location = new System.Drawing.Point(467, 156);
-            this.cotC.Name = "cotC";
-            this.cotC.Size = new System.Drawing.Size(165, 226);
-            this.cotC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.cotC.TabIndex = 10;
-            this.cotC.TabStop = false;
+            this.RodC.Image = global::HaNoiTower.Properties.Resources.tower;
+            this.RodC.Location = new System.Drawing.Point(467, 156);
+            this.RodC.Name = "RodC";
+            this.RodC.Size = new System.Drawing.Size(165, 226);
+            this.RodC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.RodC.TabIndex = 10;
+            this.RodC.TabStop = false;
+            this.RodC.Click += new System.EventHandler(this.cot_Click);
             // 
-            // cotB
+            // RodB
             // 
-            this.cotB.Image = global::HaNoiTower.Properties.Resources.tower;
-            this.cotB.Location = new System.Drawing.Point(263, 156);
-            this.cotB.Name = "cotB";
-            this.cotB.Size = new System.Drawing.Size(165, 226);
-            this.cotB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.cotB.TabIndex = 8;
-            this.cotB.TabStop = false;
+            this.RodB.Image = global::HaNoiTower.Properties.Resources.tower;
+            this.RodB.Location = new System.Drawing.Point(263, 156);
+            this.RodB.Name = "RodB";
+            this.RodB.Size = new System.Drawing.Size(165, 226);
+            this.RodB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.RodB.TabIndex = 8;
+            this.RodB.TabStop = false;
+            this.RodB.Click += new System.EventHandler(this.cot_Click);
             // 
-            // cotA
+            // RodA
             // 
-            this.cotA.Image = global::HaNoiTower.Properties.Resources.tower;
-            this.cotA.Location = new System.Drawing.Point(59, 156);
-            this.cotA.Name = "cotA";
-            this.cotA.Size = new System.Drawing.Size(165, 226);
-            this.cotA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.cotA.TabIndex = 6;
-            this.cotA.TabStop = false;
+            this.RodA.Image = global::HaNoiTower.Properties.Resources.tower;
+            this.RodA.Location = new System.Drawing.Point(59, 156);
+            this.RodA.Name = "RodA";
+            this.RodA.Size = new System.Drawing.Size(165, 226);
+            this.RodA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.RodA.TabIndex = 6;
+            this.RodA.TabStop = false;
+            this.RodA.Click += new System.EventHandler(this.cot_Click);
             // 
             // lblTime
             // 
@@ -289,17 +292,17 @@
             this.btnPlay.UseVisualStyleBackColor = true;
             this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
-            // button1
+            // btnGiveUp
             // 
-            this.button1.Enabled = false;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(274, 84);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(133, 30);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Give up";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnGiveUp.Enabled = false;
+            this.btnGiveUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGiveUp.Location = new System.Drawing.Point(274, 84);
+            this.btnGiveUp.Name = "btnGiveUp";
+            this.btnGiveUp.Size = new System.Drawing.Size(133, 30);
+            this.btnGiveUp.TabIndex = 24;
+            this.btnGiveUp.Text = "Give up";
+            this.btnGiveUp.UseVisualStyleBackColor = true;
+            this.btnGiveUp.Click += new System.EventHandler(this.button1_Click);
             // 
             // showRule
             // 
@@ -320,7 +323,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(680, 512);
             this.Controls.Add(this.showRule);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnGiveUp);
             this.Controls.Add(this.btnPlay);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.level);
@@ -334,11 +337,11 @@
             this.Controls.Add(this.disk3);
             this.Controls.Add(this.disk2);
             this.Controls.Add(this.disk1);
-            this.Controls.Add(this.cotC);
+            this.Controls.Add(this.RodC);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.cotB);
+            this.Controls.Add(this.RodB);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cotA);
+            this.Controls.Add(this.RodA);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -354,9 +357,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.disk3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.disk2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.disk1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cotC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cotB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cotA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RodC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RodB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RodA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.level)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -365,10 +368,10 @@
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox cotA;
-        private System.Windows.Forms.PictureBox cotB;
+        private System.Windows.Forms.PictureBox RodA;
+        private System.Windows.Forms.PictureBox RodB;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox cotC;
+        private System.Windows.Forms.PictureBox RodC;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox disk1;
         private System.Windows.Forms.PictureBox disk2;
@@ -384,7 +387,7 @@
         private System.Windows.Forms.NumericUpDown level;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnPlay;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGiveUp;
         private System.Windows.Forms.Button showRule;
     }
 }
