@@ -121,21 +121,26 @@ namespace HaNoiTowerGame
 
         private void MoveDisk(Point point)
         {
-            PictureBox disk = firstClickedDisks.Pop();
+            PictureBox firstTopDisk = firstClickedDisks.Pop();
 
-            bool success = secondClickedDisks.AddDisk(disk);
+            // Thử đặt đĩa vào cọc mới
+            bool success = secondClickedDisks.AddDisk(firstTopDisk);
             if (!success)
             {
-                firstClickedDisks.Push(disk);
+                firstClickedDisks.Push(firstTopDisk);
                 MessageBox.Show("❌ Không được đặt đĩa lớn lên đĩa nhỏ hơn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ResetClick();
                 return;
             }
 
-            disk.Location = point;
+            // Di chuyển đĩa trong giao diện
+            firstTopDisk.Location = point;
+
+            // Cập nhật số bước
             moveCount++;
             lblMove.Text = $"Move: {moveCount}";
 
+            // Kiểm tra chiến thắng
             if (disksC.Count() == level.Value)
             {
                 btnGiveUp.PerformClick();
