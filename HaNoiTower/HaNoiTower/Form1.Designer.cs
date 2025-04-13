@@ -108,6 +108,7 @@
             this.disk8.TabIndex = 18;
             this.disk8.TabStop = false;
             this.disk8.Tag = "8";
+            this.disk8.Click += new System.EventHandler(this.disk_click);
             // 
             // disk7
             // 
@@ -119,6 +120,7 @@
             this.disk7.TabIndex = 17;
             this.disk7.TabStop = false;
             this.disk7.Tag = "7";
+            this.disk7.Click += new System.EventHandler(this.disk_click);
             // 
             // disk6
             // 
@@ -130,6 +132,7 @@
             this.disk6.TabIndex = 16;
             this.disk6.TabStop = false;
             this.disk6.Tag = "6";
+            this.disk6.Click += new System.EventHandler(this.disk_click);
             // 
             // disk5
             // 
@@ -141,6 +144,7 @@
             this.disk5.TabIndex = 15;
             this.disk5.TabStop = false;
             this.disk5.Tag = "5";
+            this.disk5.Click += new System.EventHandler(this.disk_click);
             // 
             // disk4
             // 
@@ -152,6 +156,7 @@
             this.disk4.TabIndex = 14;
             this.disk4.TabStop = false;
             this.disk4.Tag = "4";
+            this.disk4.Click += new System.EventHandler(this.disk_click);
             // 
             // disk3
             // 
@@ -163,6 +168,7 @@
             this.disk3.TabIndex = 13;
             this.disk3.TabStop = false;
             this.disk3.Tag = "3";
+            this.disk3.Click += new System.EventHandler(this.disk_click);
             // 
             // disk2
             // 
@@ -174,6 +180,7 @@
             this.disk2.TabIndex = 12;
             this.disk2.TabStop = false;
             this.disk2.Tag = "2";
+            this.disk2.Click += new System.EventHandler(this.disk_click);
             // 
             // disk1
             // 
@@ -185,6 +192,7 @@
             this.disk1.TabIndex = 11;
             this.disk1.TabStop = false;
             this.disk1.Tag = "1";
+            this.disk1.Click += new System.EventHandler(this.disk_click);
             // 
             // RodC
             // 

@@ -1,4 +1,6 @@
-﻿namespace HaNoiTowerGame
+﻿using System.Collections.Generic;
+
+namespace HaNoiTowerGame
 {
     public class MyStack<T>
     {
@@ -55,6 +57,24 @@
             top = null;
             count = 0;
         }
+
+        public bool Contains(T item)
+        {
+            Node<T> current = top;
+            EqualityComparer<T> comparer = EqualityComparer<T>.Default;
+
+            while (current != null)
+            {
+                if (comparer.Equals(current.data, item))
+                {
+                    return true;
+                }
+                current = current.next;
+            }
+
+            return false;
+        }
+
     }
 
 }

@@ -15,8 +15,7 @@ namespace HaNoiTowerGame
         TimeSpan time;
         int moveCount;
         PictureBox[] disks;
-        HanoiTower disksA, disksB, disksC;
-        MyStack<PictureBox> firstClickedDisks, secondClickedDisks;
+        HanoiTower disksA, disksB, disksC, firstClickedDisks, secondClickedDisks;
         const int FIRSTY = 335, DISKHEIGHT = 25; 
 
         public HaNoiTowerGame()
@@ -27,6 +26,10 @@ namespace HaNoiTowerGame
             RodA.Tag = disksA = new HanoiTower("A");
             RodB.Tag = disksB = new HanoiTower("B");
             RodC.Tag = disksC = new HanoiTower("C");
+
+            RodA.Click += cot_Click;
+            RodB.Click += cot_Click;
+            RodC.Click += cot_Click;
         }
 
         private void showRule_Click(object sender, EventArgs e)
@@ -40,20 +43,116 @@ namespace HaNoiTowerGame
 
         private void cot_Click(object sender, EventArgs e)
         {
-            if (level.Enabled)
-            {
-                return;
-            }
-            PictureBox clickedRod = (PictureBox)sender;
-            HanoiTower disksOfClickedRod = (HanoiTower)clickedRod.Tag;
+            if (level.Enabled) return;
 
-            if (disksOfClickedRod == null)
+            PictureBox clickedRod = (PictureBox)sender;
+            HanoiTower rod = (HanoiTower)clickedRod.Tag;
+
+            if (firstClickedDisks == null)
             {
-                if (disksOfClickedRod.Count() == 0) return;
-                firstClickedDisks = disksOfClickedRod;
+                if (rod.IsEmpty()) return;
+
+                firstClickedDisks = rod;
                 clickedRod.BorderStyle = BorderStyle.FixedSingle;
             }
+            else if (secondClickedDisks == null)
+            {
+                // Nếu click lại chính cọc đã chọn thì hủy chọn
+                if (rod == firstClickedDisks)
+                {
+                    ResetClick();
+                    return;
+                }
 
+                secondClickedDisks = rod;
+                clickedRod.BorderStyle = BorderStyle.FixedSingle;
+
+                ProcessMovingDisk(clickedRod);
+            }
+
+        }
+
+
+        private void ProcessMovingDisk(PictureBox clickedRod)
+        {
+            if (firstClickedDisks == null || secondClickedDisks == null) return;
+
+            if (secondClickedDisks.IsEmpty())
+            {
+                MoveDisk(new Point(clickedRod.Location.X, FIRSTY));
+            }
+            else
+            {
+                PictureBox firstTopDisk = firstClickedDisks.Peek();
+                PictureBox secondTopDisk = secondClickedDisks.Peek();
+
+                int size1 = int.Parse(firstTopDisk.Tag.ToString());
+                int size2 = int.Parse(secondTopDisk.Tag.ToString());
+
+                if (size1 < size2)
+                {
+                    MoveDisk(new Point(secondTopDisk.Location.X, secondTopDisk.Location.Y - DISKHEIGHT));
+                }
+                else
+                {
+                    MessageBox.Show("❌ Không được đặt đĩa lớn lên đĩa nhỏ hơn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    ResetClick();
+                }
+            }
+        }
+
+        private void disk_click(object sender, EventArgs e)
+        {
+            PictureBox clickedDisk = (PictureBox)sender;
+
+            if (disksA.Contains(clickedDisk))
+            {
+                cot_Click(RodA, EventArgs.Empty);
+            }
+            else if (disksB.Contains(clickedDisk))
+            {
+                cot_Click(RodB, EventArgs.Empty);
+            }
+            else if (disksC.Contains(clickedDisk))
+            {
+                cot_Click(RodC, EventArgs.Empty);
+            }
+        }
+
+        private void MoveDisk(Point point)
+        {
+            PictureBox disk = firstClickedDisks.Pop();
+
+            bool success = secondClickedDisks.AddDisk(disk);
+            if (!success)
+            {
+                firstClickedDisks.Push(disk);
+                MessageBox.Show("❌ Không được đặt đĩa lớn lên đĩa nhỏ hơn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ResetClick();
+                return;
+            }
+
+            disk.Location = point;
+            moveCount++;
+            lblMove.Text = $"Move: {moveCount}";
+
+            if (disksC.Count() == level.Value)
+            {
+                btnGiveUp.PerformClick();
+                MessageBox.Show("🎉 Chúc mừng bạn đã thắng!");
+            }
+
+            ResetClick();
+        }
+
+        private void ResetClick()
+        {
+            firstClickedDisks = null;
+            secondClickedDisks = null;
+
+            RodA.BorderStyle = BorderStyle.None;
+            RodB.BorderStyle = BorderStyle.None;
+            RodC.BorderStyle = BorderStyle.None;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
