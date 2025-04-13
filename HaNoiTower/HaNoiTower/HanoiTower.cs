@@ -14,17 +14,16 @@ namespace HaNoiTowerGame
 
         public bool AddDisk(PictureBox disk)
         {
+
+            int size1 = int.Parse(disk.Tag.ToString());
+            
             if (!this.IsEmpty())
             {
-                PictureBox topDisk = this.Peek();
-
-                // So sánh chiều rộng để xác định kích thước đĩa
-                if (topDisk.Width <= disk.Width)
-                {
+                PictureBox top = this.Peek();
+                int size2 = int.Parse(top.Tag.ToString());
+                if (size1 < size2)
                     return false;
-                }
             }
-
             this.Push(disk);
             return true;
         }

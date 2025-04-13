@@ -15,7 +15,9 @@ namespace HaNoiTowerGame
         TimeSpan time;
         int moveCount;
         PictureBox[] disks;
-        HanoiTower disksA, disksB, disksC, firstClickedDisks, secondClickedDisks;
+        PictureBox currentFirstRod;
+        HanoiTower disksA, disksB, disksC, firstTower, secondTower ;
+        MyStack<PictureBox> firstClickedDisks, secondClickedDisks;
         const int FIRSTY = 335, DISKHEIGHT = 25; 
 
         public HaNoiTowerGame()
@@ -46,45 +48,46 @@ namespace HaNoiTowerGame
             if (level.Enabled) return;
 
             PictureBox clickedRod = (PictureBox)sender;
-            HanoiTower rod = (HanoiTower)clickedRod.Tag;
+            HanoiTower clickedTower = (HanoiTower)clickedRod.Tag;
 
-            if (firstClickedDisks == null)
+            if (firstTower == null)
             {
-                if (rod.IsEmpty()) return;
+                if (clickedTower.IsEmpty()) return;
 
-                firstClickedDisks = rod;
+                firstTower = clickedTower;
+                currentFirstRod = clickedRod;
                 clickedRod.BorderStyle = BorderStyle.FixedSingle;
             }
-            else if (secondClickedDisks == null)
+            else if (secondTower == null)
             {
-                // Nếu click lại chính cọc đã chọn thì hủy chọn
-                if (rod == firstClickedDisks)
+                if (clickedTower == firstTower)
                 {
                     ResetClick();
                     return;
                 }
 
-                secondClickedDisks = rod;
+                secondTower = clickedTower;
                 clickedRod.BorderStyle = BorderStyle.FixedSingle;
 
                 ProcessMovingDisk(clickedRod);
             }
+
 
         }
 
 
         private void ProcessMovingDisk(PictureBox clickedRod)
         {
-            if (firstClickedDisks == null || secondClickedDisks == null) return;
+            if (firstTower == null || secondTower == null) return;
 
-            if (secondClickedDisks.IsEmpty())
+            if (secondTower.IsEmpty())
             {
                 MoveDisk(new Point(clickedRod.Location.X, FIRSTY));
             }
             else
             {
-                PictureBox firstTopDisk = firstClickedDisks.Peek();
-                PictureBox secondTopDisk = secondClickedDisks.Peek();
+                PictureBox firstTopDisk = firstTower.Peek();
+                PictureBox secondTopDisk = secondTower.Peek();
 
                 int size1 = int.Parse(firstTopDisk.Tag.ToString());
                 int size2 = int.Parse(secondTopDisk.Tag.ToString());
@@ -121,26 +124,21 @@ namespace HaNoiTowerGame
 
         private void MoveDisk(Point point)
         {
-            PictureBox firstTopDisk = firstClickedDisks.Pop();
+            PictureBox disk = firstTower.Pop();
 
-            // Thử đặt đĩa vào cọc mới
-            bool success = secondClickedDisks.AddDisk(firstTopDisk);
+            bool success = secondTower.AddDisk(disk);
             if (!success)
             {
-                firstClickedDisks.Push(firstTopDisk);
+                firstTower.Push(disk);
                 MessageBox.Show("❌ Không được đặt đĩa lớn lên đĩa nhỏ hơn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ResetClick();
                 return;
             }
 
-            // Di chuyển đĩa trong giao diện
-            firstTopDisk.Location = point;
-
-            // Cập nhật số bước
+            disk.Location = point;
             moveCount++;
             lblMove.Text = $"Move: {moveCount}";
 
-            // Kiểm tra chiến thắng
             if (disksC.Count() == level.Value)
             {
                 btnGiveUp.PerformClick();
@@ -150,14 +148,19 @@ namespace HaNoiTowerGame
             ResetClick();
         }
 
+
         private void ResetClick()
         {
-            firstClickedDisks = null;
-            secondClickedDisks = null;
+            firstTower = null;
+            secondTower = null;
 
-            RodA.BorderStyle = BorderStyle.None;
-            RodB.BorderStyle = BorderStyle.None;
-            RodC.BorderStyle = BorderStyle.None;
+            if (currentFirstRod != null)
+            {
+                currentFirstRod.BorderStyle = BorderStyle.None;
+                currentFirstRod = null;
+            }
+
+            RodA.BorderStyle = RodB.BorderStyle = RodC.BorderStyle = BorderStyle.None;
         }
 
         private void timer1_Tick(object sender, EventArgs e)

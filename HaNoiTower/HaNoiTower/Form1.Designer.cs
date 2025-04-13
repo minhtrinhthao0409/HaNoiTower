@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HaNoiTowerGame));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -100,7 +101,7 @@
             // 
             // disk8
             // 
-            this.disk8.Image = global::HaNoiTower.Properties.Resources.disk_8;
+            this.disk8.Image = ((System.Drawing.Image)(resources.GetObject("disk8.Image")));
             this.disk8.Location = new System.Drawing.Point(59, 188);
             this.disk8.Name = "disk8";
             this.disk8.Size = new System.Drawing.Size(164, 25);
@@ -112,7 +113,7 @@
             // 
             // disk7
             // 
-            this.disk7.Image = global::HaNoiTower.Properties.Resources.disk_7;
+            this.disk7.Image = ((System.Drawing.Image)(resources.GetObject("disk7.Image")));
             this.disk7.Location = new System.Drawing.Point(59, 208);
             this.disk7.Name = "disk7";
             this.disk7.Size = new System.Drawing.Size(164, 25);
@@ -124,7 +125,7 @@
             // 
             // disk6
             // 
-            this.disk6.Image = global::HaNoiTower.Properties.Resources.disk_6;
+            this.disk6.Image = ((System.Drawing.Image)(resources.GetObject("disk6.Image")));
             this.disk6.Location = new System.Drawing.Point(60, 229);
             this.disk6.Name = "disk6";
             this.disk6.Size = new System.Drawing.Size(164, 25);
@@ -136,7 +137,7 @@
             // 
             // disk5
             // 
-            this.disk5.Image = global::HaNoiTower.Properties.Resources.disk_5;
+            this.disk5.Image = ((System.Drawing.Image)(resources.GetObject("disk5.Image")));
             this.disk5.Location = new System.Drawing.Point(59, 248);
             this.disk5.Name = "disk5";
             this.disk5.Size = new System.Drawing.Size(164, 25);
@@ -148,7 +149,7 @@
             // 
             // disk4
             // 
-            this.disk4.Image = global::HaNoiTower.Properties.Resources.disk_4;
+            this.disk4.Image = ((System.Drawing.Image)(resources.GetObject("disk4.Image")));
             this.disk4.Location = new System.Drawing.Point(60, 272);
             this.disk4.Name = "disk4";
             this.disk4.Size = new System.Drawing.Size(164, 25);
@@ -160,7 +161,7 @@
             // 
             // disk3
             // 
-            this.disk3.Image = global::HaNoiTower.Properties.Resources.disk_3;
+            this.disk3.Image = ((System.Drawing.Image)(resources.GetObject("disk3.Image")));
             this.disk3.Location = new System.Drawing.Point(59, 296);
             this.disk3.Name = "disk3";
             this.disk3.Size = new System.Drawing.Size(164, 25);
@@ -172,7 +173,7 @@
             // 
             // disk2
             // 
-            this.disk2.Image = global::HaNoiTower.Properties.Resources.disk_2;
+            this.disk2.Image = ((System.Drawing.Image)(resources.GetObject("disk2.Image")));
             this.disk2.Location = new System.Drawing.Point(59, 315);
             this.disk2.Name = "disk2";
             this.disk2.Size = new System.Drawing.Size(164, 25);
@@ -184,7 +185,7 @@
             // 
             // disk1
             // 
-            this.disk1.Image = global::HaNoiTower.Properties.Resources.disk_1;
+            this.disk1.Image = ((System.Drawing.Image)(resources.GetObject("disk1.Image")));
             this.disk1.Location = new System.Drawing.Point(60, 335);
             this.disk1.Name = "disk1";
             this.disk1.Size = new System.Drawing.Size(164, 25);
@@ -196,7 +197,7 @@
             // 
             // RodC
             // 
-            this.RodC.Image = global::HaNoiTower.Properties.Resources.tower;
+            this.RodC.Image = ((System.Drawing.Image)(resources.GetObject("RodC.Image")));
             this.RodC.Location = new System.Drawing.Point(467, 156);
             this.RodC.Name = "RodC";
             this.RodC.Size = new System.Drawing.Size(165, 226);
@@ -207,7 +208,7 @@
             // 
             // RodB
             // 
-            this.RodB.Image = global::HaNoiTower.Properties.Resources.tower;
+            this.RodB.Image = ((System.Drawing.Image)(resources.GetObject("RodB.Image")));
             this.RodB.Location = new System.Drawing.Point(263, 156);
             this.RodB.Name = "RodB";
             this.RodB.Size = new System.Drawing.Size(165, 226);
@@ -218,7 +219,7 @@
             // 
             // RodA
             // 
-            this.RodA.Image = global::HaNoiTower.Properties.Resources.tower;
+            this.RodA.Image = ((System.Drawing.Image)(resources.GetObject("RodA.Image")));
             this.RodA.Location = new System.Drawing.Point(59, 156);
             this.RodA.Name = "RodA";
             this.RodA.Size = new System.Drawing.Size(165, 226);
