@@ -5,6 +5,7 @@ namespace HaNoiTowerGame
 {
     public class HanoiTower : MyStack<PictureBox>
     {
+
         public string Name { get; set; }
 
         public HanoiTower(string name)
@@ -14,9 +15,8 @@ namespace HaNoiTowerGame
 
         public bool AddDisk(PictureBox disk)
         {
-
             int size1 = int.Parse(disk.Tag.ToString());
-            
+
             if (!this.IsEmpty())
             {
                 PictureBox top = this.Peek();
@@ -41,16 +41,5 @@ namespace HaNoiTowerGame
             return this.Peek();
         }
 
-        //public void PrintTower()
-        //{
-        //    Console.WriteLine($"\n📦 Tower {Name}:");
-
-        //    PictureBox[] disks = this.ToArray();
-        //    for (int i = disks.Length - 1; i >= 0; i--)
-        //    {
-        //        Console.WriteLine($" - Disk width: {disks[i].Width}");
-        //    }
-
-        //}
     }
 }

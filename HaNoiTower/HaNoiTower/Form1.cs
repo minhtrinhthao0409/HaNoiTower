@@ -45,31 +45,35 @@ namespace HaNoiTowerGame
 
         private void cot_Click(object sender, EventArgs e)
         {
-            if (level.Enabled) return;
+            if (level.Enabled) return; // Nếu chưa bắt đầu game thì bỏ qua
 
             PictureBox clickedRod = (PictureBox)sender;
             HanoiTower clickedTower = (HanoiTower)clickedRod.Tag;
 
             if (firstTower == null)
             {
-                if (clickedTower.IsEmpty()) return;
+                if (clickedTower.IsEmpty()) return; // Không cho chọn cọc rỗng làm cọc xuất phát
 
                 firstTower = clickedTower;
                 currentFirstRod = clickedRod;
                 clickedRod.BorderStyle = BorderStyle.FixedSingle;
             }
-            else if (secondTower == null)
+            else
             {
+                // Click lại đúng cọc đã chọn → hủy chọn
                 if (clickedTower == firstTower)
                 {
                     ResetClick();
                     return;
                 }
 
+                // Nếu đã có firstTower và secondTower thì bỏ qua (tránh double-click nhanh)
+                if (secondTower != null) return;
+
                 secondTower = clickedTower;
                 clickedRod.BorderStyle = BorderStyle.FixedSingle;
 
-                ProcessMovingDisk(clickedRod);
+                ProcessMovingDisk(clickedRod); // xử lý di chuyển sau khi chọn đủ 2 cọc
             }
 
 
@@ -78,11 +82,14 @@ namespace HaNoiTowerGame
 
         private void ProcessMovingDisk(PictureBox clickedRod)
         {
-            if (firstTower == null || secondTower == null) return;
+            if (firstTower == null || secondTower == null)
+                return;
+
+            bool moved = false;
 
             if (secondTower.IsEmpty())
             {
-                MoveDisk(new Point(clickedRod.Location.X, FIRSTY));
+                moved = MoveDisk(new Point(clickedRod.Location.X, FIRSTY));
             }
             else
             {
@@ -92,16 +99,24 @@ namespace HaNoiTowerGame
                 int size1 = int.Parse(firstTopDisk.Tag.ToString());
                 int size2 = int.Parse(secondTopDisk.Tag.ToString());
 
-                if (size1 < size2)
+                if (size1 > size2)
                 {
-                    MoveDisk(new Point(secondTopDisk.Location.X, secondTopDisk.Location.Y - DISKHEIGHT));
+                    moved = MoveDisk(new Point(secondTopDisk.Location.X, secondTopDisk.Location.Y - DISKHEIGHT));
                 }
                 else
                 {
                     MessageBox.Show("❌ Không được đặt đĩa lớn lên đĩa nhỏ hơn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    ResetClick();
                 }
             }
+
+            ResetClick(); // Reset regardless of move result
+        }
+
+        private void btnGiveUp_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            level.Enabled = true;
+            btnGiveUp.Enabled = false;
         }
 
         private void disk_click(object sender, EventArgs e)
@@ -122,7 +137,7 @@ namespace HaNoiTowerGame
             }
         }
 
-        private void MoveDisk(Point point)
+        private bool MoveDisk(Point point)
         {
             PictureBox disk = firstTower.Pop();
 
@@ -131,8 +146,7 @@ namespace HaNoiTowerGame
             {
                 firstTower.Push(disk);
                 MessageBox.Show("❌ Không được đặt đĩa lớn lên đĩa nhỏ hơn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                ResetClick();
-                return;
+                return false;
             }
 
             disk.Location = point;
@@ -145,9 +159,9 @@ namespace HaNoiTowerGame
                 MessageBox.Show("🎉 Chúc mừng bạn đã thắng!");
             }
 
-            ResetClick();
-        }
+            return true;
 
+        }
 
         private void ResetClick()
         {
@@ -169,16 +183,8 @@ namespace HaNoiTowerGame
             lblTime.Text = string.Format("Thời gian: {0:00}:{1:00}:{2:00}", time.Hours, time.Minutes, time.Seconds);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            timer1.Stop();
-            level.Enabled = true;
-            btnGiveUp.Enabled = false;
-        }
-
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            // reset
             timer1.Stop();
             foreach (PictureBox disk in disks)
             {
@@ -195,7 +201,7 @@ namespace HaNoiTowerGame
 
             RodA.BorderStyle = RodB.BorderStyle = RodC.BorderStyle = BorderStyle.None;
             firstClickedDisks = secondClickedDisks = null;
-            // Khởi tạo gamne mới
+
             level.Enabled = false;
             btnGiveUp.Enabled = true;
             btnPlay.Text = "Play Again";

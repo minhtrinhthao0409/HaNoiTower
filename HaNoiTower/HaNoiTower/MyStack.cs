@@ -37,7 +37,7 @@ namespace HaNoiTowerGame
         public int Count()
         {
             return count;
-        } 
+        }
 
         public T[] ToArray()
         {

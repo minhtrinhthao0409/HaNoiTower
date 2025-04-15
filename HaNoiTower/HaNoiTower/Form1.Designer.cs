@@ -311,7 +311,7 @@
             this.btnGiveUp.TabIndex = 24;
             this.btnGiveUp.Text = "Give up";
             this.btnGiveUp.UseVisualStyleBackColor = true;
-            this.btnGiveUp.Click += new System.EventHandler(this.button1_Click);
+            this.btnGiveUp.Click += new System.EventHandler(this.btnGiveUp_Click);
             // 
             // showRule
             // 
