@@ -156,7 +156,7 @@ namespace HaNoiTowerGame
             if (disksC.Count() == level.Value)
             {
                 btnGiveUp.PerformClick();
-                MessageBox.Show("🎉 Chúc mừng bạn đã thắng!");
+                MessageBox.Show("Chúc mừng bạn đã thắng!");
             }
 
             return true;

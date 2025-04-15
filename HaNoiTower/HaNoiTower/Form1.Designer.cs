@@ -102,9 +102,9 @@
             // disk8
             // 
             this.disk8.Image = ((System.Drawing.Image)(resources.GetObject("disk8.Image")));
-            this.disk8.Location = new System.Drawing.Point(59, 188);
+            this.disk8.Location = new System.Drawing.Point(60, 188);
             this.disk8.Name = "disk8";
-            this.disk8.Size = new System.Drawing.Size(164, 25);
+            this.disk8.Size = new System.Drawing.Size(163, 25);
             this.disk8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.disk8.TabIndex = 18;
             this.disk8.TabStop = false;
@@ -114,9 +114,9 @@
             // disk7
             // 
             this.disk7.Image = ((System.Drawing.Image)(resources.GetObject("disk7.Image")));
-            this.disk7.Location = new System.Drawing.Point(59, 208);
+            this.disk7.Location = new System.Drawing.Point(60, 208);
             this.disk7.Name = "disk7";
-            this.disk7.Size = new System.Drawing.Size(164, 25);
+            this.disk7.Size = new System.Drawing.Size(163, 25);
             this.disk7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.disk7.TabIndex = 17;
             this.disk7.TabStop = false;
@@ -128,7 +128,7 @@
             this.disk6.Image = ((System.Drawing.Image)(resources.GetObject("disk6.Image")));
             this.disk6.Location = new System.Drawing.Point(60, 229);
             this.disk6.Name = "disk6";
-            this.disk6.Size = new System.Drawing.Size(164, 25);
+            this.disk6.Size = new System.Drawing.Size(163, 25);
             this.disk6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.disk6.TabIndex = 16;
             this.disk6.TabStop = false;
@@ -138,9 +138,9 @@
             // disk5
             // 
             this.disk5.Image = ((System.Drawing.Image)(resources.GetObject("disk5.Image")));
-            this.disk5.Location = new System.Drawing.Point(59, 248);
+            this.disk5.Location = new System.Drawing.Point(60, 248);
             this.disk5.Name = "disk5";
-            this.disk5.Size = new System.Drawing.Size(164, 25);
+            this.disk5.Size = new System.Drawing.Size(163, 25);
             this.disk5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.disk5.TabIndex = 15;
             this.disk5.TabStop = false;
@@ -152,7 +152,7 @@
             this.disk4.Image = ((System.Drawing.Image)(resources.GetObject("disk4.Image")));
             this.disk4.Location = new System.Drawing.Point(60, 272);
             this.disk4.Name = "disk4";
-            this.disk4.Size = new System.Drawing.Size(164, 25);
+            this.disk4.Size = new System.Drawing.Size(163, 25);
             this.disk4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.disk4.TabIndex = 14;
             this.disk4.TabStop = false;
@@ -162,9 +162,9 @@
             // disk3
             // 
             this.disk3.Image = ((System.Drawing.Image)(resources.GetObject("disk3.Image")));
-            this.disk3.Location = new System.Drawing.Point(59, 296);
+            this.disk3.Location = new System.Drawing.Point(60, 296);
             this.disk3.Name = "disk3";
-            this.disk3.Size = new System.Drawing.Size(164, 25);
+            this.disk3.Size = new System.Drawing.Size(163, 25);
             this.disk3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.disk3.TabIndex = 13;
             this.disk3.TabStop = false;
@@ -174,9 +174,9 @@
             // disk2
             // 
             this.disk2.Image = ((System.Drawing.Image)(resources.GetObject("disk2.Image")));
-            this.disk2.Location = new System.Drawing.Point(59, 315);
+            this.disk2.Location = new System.Drawing.Point(60, 315);
             this.disk2.Name = "disk2";
-            this.disk2.Size = new System.Drawing.Size(164, 25);
+            this.disk2.Size = new System.Drawing.Size(163, 25);
             this.disk2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.disk2.TabIndex = 12;
             this.disk2.TabStop = false;

@@ -28,18 +28,6 @@ namespace HaNoiTowerGame
             return true;
         }
 
-        public PictureBox RemoveDisk()
-        {
-            if (this.IsEmpty())
-                return null;
-
-            return this.Pop();
-        }
-
-        public PictureBox PeekDisk()
-        {
-            return this.Peek();
-        }
 
     }
 }
