@@ -52,6 +52,7 @@
             this.btnPlay = new System.Windows.Forms.Button();
             this.btnGiveUp = new System.Windows.Forms.Button();
             this.showRule = new System.Windows.Forms.Button();
+            this.btnSolved = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.disk8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.disk7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.disk6)).BeginInit();
@@ -305,7 +306,7 @@
             // 
             this.btnGiveUp.Enabled = false;
             this.btnGiveUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGiveUp.Location = new System.Drawing.Point(274, 84);
+            this.btnGiveUp.Location = new System.Drawing.Point(216, 84);
             this.btnGiveUp.Name = "btnGiveUp";
             this.btnGiveUp.Size = new System.Drawing.Size(133, 30);
             this.btnGiveUp.TabIndex = 24;
@@ -325,12 +326,25 @@
             this.showRule.UseVisualStyleBackColor = true;
             this.showRule.Click += new System.EventHandler(this.showRule_Click);
             // 
+            // btnSolved
+            // 
+            this.btnSolved.Enabled = false;
+            this.btnSolved.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSolved.Location = new System.Drawing.Point(360, 84);
+            this.btnSolved.Name = "btnSolved";
+            this.btnSolved.Size = new System.Drawing.Size(133, 30);
+            this.btnSolved.TabIndex = 26;
+            this.btnSolved.Text = "Solved!";
+            this.btnSolved.UseVisualStyleBackColor = true;
+            this.btnSolved.Click += new System.EventHandler(this.btnSolved_Click);
+            // 
             // HaNoiTowerGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(680, 512);
+            this.Controls.Add(this.btnSolved);
             this.Controls.Add(this.showRule);
             this.Controls.Add(this.btnGiveUp);
             this.Controls.Add(this.btnPlay);
@@ -398,6 +412,7 @@
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Button btnGiveUp;
         private System.Windows.Forms.Button showRule;
+        private System.Windows.Forms.Button btnSolved;
     }
 }
 

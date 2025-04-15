@@ -113,6 +113,11 @@ namespace HaNoiTowerGame
             }
         }
 
+        private void btnSolved_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnGiveUp_Click(object sender, EventArgs e)
         {
             timer1.Stop();
