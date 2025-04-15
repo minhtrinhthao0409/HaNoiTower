@@ -16,15 +16,15 @@ namespace HaNoiTowerGame
         int moveCount;
         PictureBox[] disks;
         PictureBox currentFirstRod;
-        HanoiTower disksA, disksB, disksC, firstTower, secondTower ;
+        HanoiTower disksA, disksB, disksC, firstTower, secondTower;
         MyStack<PictureBox> firstClickedDisks, secondClickedDisks;
-        const int FIRSTY = 335, DISKHEIGHT = 25; 
+        const int FIRSTY = 335, DISKHEIGHT = 25;
 
         public HaNoiTowerGame()
         {
             InitializeComponent();
             level.Enabled = true;
-            disks = new PictureBox[] {disk1, disk2, disk3, disk4, disk5, disk6, disk7, disk8};
+            disks = new PictureBox[] { disk1, disk2, disk3, disk4, disk5, disk6, disk7, disk8 };
             RodA.Tag = disksA = new HanoiTower("A");
             RodB.Tag = disksB = new HanoiTower("B");
             RodC.Tag = disksC = new HanoiTower("C");
@@ -40,19 +40,19 @@ namespace HaNoiTowerGame
                 "\r\n\r\nChỉ được di chuyển một đĩa mỗi lần." +
                 "\r\nChỉ được lấy đĩa ở trên cùng của cọc." +
                 "\r\nKhông được đặt đĩa lớn lên trên đĩa nhỏ hơn.",
-                "Luật chơi", MessageBoxButtons.OK, MessageBoxIcon.Information);    
+                "Luật chơi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void cot_Click(object sender, EventArgs e)
         {
-            if (level.Enabled) return; // Nếu chưa bắt đầu game thì bỏ qua
+            if (level.Enabled) return;
 
             PictureBox clickedRod = (PictureBox)sender;
             HanoiTower clickedTower = (HanoiTower)clickedRod.Tag;
 
             if (firstTower == null)
             {
-                if (clickedTower.IsEmpty()) return; // Không cho chọn cọc rỗng làm cọc xuất phát
+                if (clickedTower.IsEmpty()) return;
 
                 firstTower = clickedTower;
                 currentFirstRod = clickedRod;
@@ -60,56 +60,57 @@ namespace HaNoiTowerGame
             }
             else
             {
-                // Click lại đúng cọc đã chọn → hủy chọn
                 if (clickedTower == firstTower)
                 {
                     ResetClick();
                     return;
                 }
 
-                // Nếu đã có firstTower và secondTower thì bỏ qua (tránh double-click nhanh)
                 if (secondTower != null) return;
 
                 secondTower = clickedTower;
                 clickedRod.BorderStyle = BorderStyle.FixedSingle;
 
-                ProcessMovingDisk(clickedRod); // xử lý di chuyển sau khi chọn đủ 2 cọc
+                ProcessMovingDisk(clickedRod);
             }
-
-
         }
-
 
         private void ProcessMovingDisk(PictureBox clickedRod)
         {
-            if (firstTower == null || secondTower == null)
-                return;
-
-            bool moved = false;
-
-            if (secondTower.IsEmpty())
+            try
             {
-                moved = MoveDisk(new Point(clickedRod.Location.X, FIRSTY));
-            }
-            else
-            {
-                PictureBox firstTopDisk = firstTower.Peek();
-                PictureBox secondTopDisk = secondTower.Peek();
+                if (firstTower == null || secondTower == null)
+                    return;
 
-                int size1 = int.Parse(firstTopDisk.Tag.ToString());
-                int size2 = int.Parse(secondTopDisk.Tag.ToString());
+                bool moved = false;
 
-                if (size1 > size2)
+                if (secondTower.IsEmpty())
                 {
-                    moved = MoveDisk(new Point(secondTopDisk.Location.X, secondTopDisk.Location.Y - DISKHEIGHT));
+                    moved = MoveDisk(new Point(clickedRod.Location.X, FIRSTY));
                 }
                 else
                 {
-                    MessageBox.Show("❌ Không được đặt đĩa lớn lên đĩa nhỏ hơn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    PictureBox firstTopDisk = firstTower.Peek();
+                    PictureBox secondTopDisk = secondTower.Peek();
+
+                    int size1 = int.Parse(firstTopDisk.Tag.ToString());
+                    int size2 = int.Parse(secondTopDisk.Tag.ToString());
+
+                    if (size1 < size2)
+                    {
+                        MessageBox.Show("Không được đặt đĩa lớn lên đĩa nhỏ hơn!", "Lỗi", 
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        moved = MoveDisk(new Point(secondTopDisk.Location.X, secondTopDisk.Location.Y - DISKHEIGHT));
+                    }
                 }
             }
-
-            ResetClick(); // Reset regardless of move result
+            finally
+            {
+                ResetClick();
+            }
         }
 
         private void btnGiveUp_Click(object sender, EventArgs e)
@@ -145,7 +146,6 @@ namespace HaNoiTowerGame
             if (!success)
             {
                 firstTower.Push(disk);
-                MessageBox.Show("❌ Không được đặt đĩa lớn lên đĩa nhỏ hơn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -160,9 +160,7 @@ namespace HaNoiTowerGame
             }
 
             return true;
-
         }
-
         private void ResetClick()
         {
             firstTower = null;
@@ -213,7 +211,6 @@ namespace HaNoiTowerGame
                 disksA.Push(disks[i]);
             }
             timer1.Start();
-
         }
     }
 }
