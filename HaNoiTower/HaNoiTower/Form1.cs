@@ -115,7 +115,7 @@ namespace HaNoiTowerGame
 
         private async void btnSolved_Click(object sender, EventArgs e)
         {
-            var solver = new HanoiSolver(disksA, disksB, disksC, this);
+            HanoiSolver solver = new HanoiSolver(disksA, disksB, disksC, this);
             await solver.SolveAsync((int)level.Value);
         }
 

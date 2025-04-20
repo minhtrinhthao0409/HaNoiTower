@@ -51,7 +51,7 @@ namespace HaNoiTowerGame
                 // Cập nhật tọa độ UI
                 int baseX = GetTowerBaseX(to);
                 int diskIndex = to.Count() - 1; // 0-based
-                int diskY = 335 - diskIndex * 20; // Tùy chỉnh chiều cao cột
+                int diskY = 335 - diskIndex * 25; // Tùy chỉnh chiều cao cột
 
                 disk.Location = new System.Drawing.Point(baseX, diskY);
                 disk.BringToFront(); // Đảm bảo đĩa hiện lên trên
@@ -65,8 +65,8 @@ namespace HaNoiTowerGame
         {
             switch (tower.Name)
             {
-                case "A": return 63;
-                case "B": return 268;
+                case "A": return 62;
+                case "B": return 265;
                 case "C": return 468;
                 default: return 0;
             }
