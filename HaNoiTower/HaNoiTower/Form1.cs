@@ -113,9 +113,10 @@ namespace HaNoiTowerGame
             }
         }
 
-        private void btnSolved_Click(object sender, EventArgs e)
+        private async void btnSolved_Click(object sender, EventArgs e)
         {
-
+            var solver = new HanoiSolver(disksA, disksB, disksC, this);
+            await solver.SolveAsync((int)level.Value);
         }
 
         private void btnGiveUp_Click(object sender, EventArgs e)
@@ -208,6 +209,7 @@ namespace HaNoiTowerGame
             level.Enabled = false;
             btnGiveUp.Enabled = true;
             btnPlay.Text = "Play Again";
+            btnSolved.Enabled = true;
             int x = RodA.Location.X, y = FIRSTY;
             for (int i = 0; i <= (int)level.Value - 1; i++, y -= DISKHEIGHT)
             {
