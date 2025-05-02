@@ -115,8 +115,14 @@ namespace HaNoiTowerGame
 
         private async void btnSolved_Click(object sender, EventArgs e)
         {
+            timer1.Stop();
+            time = new TimeSpan(0);
+            moveCount = 0;
+            timer1.Start();
             HanoiSolver solver = new HanoiSolver(disksA, disksB, disksC, this);
             await solver.SolveAsync((int)level.Value);
+            lblMove.Text = $"Move: {solver.countMove}";
+
         }
 
         private void btnGiveUp_Click(object sender, EventArgs e)

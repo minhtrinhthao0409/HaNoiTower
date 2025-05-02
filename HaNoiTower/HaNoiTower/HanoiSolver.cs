@@ -19,10 +19,11 @@ namespace HaNoiTowerGame
             form = uiForm;
 
         }
-
+        public int countMove = 0;
         public async Task SolveAsync(int n)
         {
             await MoveDisks(n, source, destination, auxiliary);
+            
         }
 
         private async Task MoveDisks(int n, HanoiTower src, HanoiTower dst, HanoiTower aux)
@@ -37,6 +38,8 @@ namespace HaNoiTowerGame
 
             // Di chuyển n-1 đĩa từ trung gian sang đích
             await MoveDisks(n - 1, aux, dst, src);
+
+            
         }
 
         private async Task MoveOneDisk(HanoiTower from, HanoiTower to)
@@ -59,6 +62,7 @@ namespace HaNoiTowerGame
 
                 await Task.Delay(500); // Thời gian chờ giữa các bước
             }
+            countMove++;
         }
 
         private int GetTowerBaseX(HanoiTower tower)
