@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -22,7 +24,9 @@ namespace HaNoiTowerGame
         public int countMove = 0;
         public async Task SolveAsync(int n)
         {
+            
             await MoveDisks(n, source, destination, auxiliary);
+
             
         }
 
@@ -41,7 +45,7 @@ namespace HaNoiTowerGame
 
             
         }
-
+        
         private async Task MoveOneDisk(HanoiTower from, HanoiTower to)
         {
             if (!from.IsEmpty())
@@ -60,10 +64,14 @@ namespace HaNoiTowerGame
                 disk.BringToFront(); // Đảm bảo đĩa hiện lên trên
                 form.Refresh();
 
+                countMove++;
+                
                 await Task.Delay(500); // Thời gian chờ giữa các bước
             }
-            countMove++;
+            
         }
+
+        public int Count() { return countMove; }
 
         private int GetTowerBaseX(HanoiTower tower)
         {

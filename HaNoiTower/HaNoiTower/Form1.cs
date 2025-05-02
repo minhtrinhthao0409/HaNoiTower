@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -121,15 +122,17 @@ namespace HaNoiTowerGame
             timer1.Start();
             HanoiSolver solver = new HanoiSolver(disksA, disksB, disksC, this);
             await solver.SolveAsync((int)level.Value);
-            lblMove.Text = $"Move: {solver.countMove}";
+            lblMove.Text = $"Move: {solver.Count()}";
 
         }
 
         private void btnGiveUp_Click(object sender, EventArgs e)
         {
             timer1.Stop();
+            time = new TimeSpan(0);
             level.Enabled = true;
             btnGiveUp.Enabled = false;
+            btnSolved.Enabled = true;
         }
 
         private void disk_click(object sender, EventArgs e)
@@ -213,9 +216,10 @@ namespace HaNoiTowerGame
             firstClickedDisks = secondClickedDisks = null;
 
             level.Enabled = false;
+            btnSolved.Enabled = false;
             btnGiveUp.Enabled = true;
             btnPlay.Text = "Play Again";
-            btnSolved.Enabled = true;
+            //btnSolved.Enabled = false;
             int x = RodA.Location.X, y = FIRSTY;
             for (int i = 0; i <= (int)level.Value - 1; i++, y -= DISKHEIGHT)
             {
