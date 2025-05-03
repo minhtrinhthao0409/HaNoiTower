@@ -20,9 +20,10 @@ namespace HaNoiTowerGame
         HanoiTower disksA, disksB, disksC, firstTower, secondTower;
         MyStack<PictureBox> firstClickedDisks, secondClickedDisks;
         const int FIRSTY = 335, DISKHEIGHT = 25;
-
+        //HaNoiTower: Disk(Name)
         public HaNoiTowerGame()
         {
+            //level.Enabled: chương trình bắt đầu
             InitializeComponent();
             level.Enabled = true;
             disks = new PictureBox[] { disk1, disk2, disk3, disk4, disk5, disk6, disk7, disk8 };
@@ -34,7 +35,7 @@ namespace HaNoiTowerGame
             RodB.Click += cot_Click;
             RodC.Click += cot_Click;
         }
-
+        // nút hướng dẫn
         private void showRule_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Luật chơi:" +
@@ -43,7 +44,7 @@ namespace HaNoiTowerGame
                 "\r\nKhông được đặt đĩa lớn lên trên đĩa nhỏ hơn.",
                 "Luật chơi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
+        // Di chuyển đĩa
         private void cot_Click(object sender, EventArgs e)
         {
             if (level.Enabled) return;
@@ -123,13 +124,13 @@ namespace HaNoiTowerGame
             HanoiSolver solver = new HanoiSolver(disksA, disksB, disksC, this);
             await solver.SolveAsync((int)level.Value);
             lblMove.Text = $"Move: {solver.Count()}";
-
         }
 
         private void btnGiveUp_Click(object sender, EventArgs e)
         {
             timer1.Stop();
             time = new TimeSpan(0);
+            lblTime.Text = "Thời gian: 00:00:00";
             level.Enabled = true;
             btnGiveUp.Enabled = false;
             btnSolved.Enabled = true;
@@ -208,6 +209,7 @@ namespace HaNoiTowerGame
             moveCount = 0;
             lblTime.Text = "Thời gian: 00:00:00";
             lblMove.Text = "Move: 0";
+            //lblMove.Text = $"Move: {moveCount}";
             disksA.Clear();
             disksB.Clear();
             disksC.Clear();

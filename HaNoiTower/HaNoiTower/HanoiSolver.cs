@@ -27,7 +27,6 @@ namespace HaNoiTowerGame
             
             await MoveDisks(n, source, destination, auxiliary);
 
-            
         }
 
         private async Task MoveDisks(int n, HanoiTower src, HanoiTower dst, HanoiTower aux)
