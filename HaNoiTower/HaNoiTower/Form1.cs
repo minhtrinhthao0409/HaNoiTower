@@ -120,6 +120,26 @@ namespace HaNoiTowerGame
             timer1.Stop();
             time = new TimeSpan(0);
             moveCount = 0;
+            foreach (PictureBox disk in disks)
+            {
+                disk.Visible = false;
+            }
+
+            time = new TimeSpan(0);
+            moveCount = 0;
+            
+            disksA.Clear();
+            disksB.Clear();
+            disksC.Clear();
+
+            int x = RodA.Location.X, y = FIRSTY;
+            for (int i = 0; i <= (int)level.Value - 1; i++, y -= DISKHEIGHT)
+            {
+                disks[i].Location = new Point(x, y);
+                disks[i].Visible = true;
+                disksA.Push(disks[i]);
+            }
+
             timer1.Start();
             HanoiSolver solver = new HanoiSolver(disksA, disksB, disksC, this);
             await solver.SolveAsync((int)level.Value);
