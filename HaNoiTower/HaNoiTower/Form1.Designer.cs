@@ -297,7 +297,7 @@
             this.btnPlay.Location = new System.Drawing.Point(60, 84);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(133, 30);
-            this.btnPlay.TabIndex = 23;
+            this.btnPlay.TabIndex = 1;
             this.btnPlay.Text = "Play!";
             this.btnPlay.UseVisualStyleBackColor = true;
             this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
@@ -309,7 +309,7 @@
             this.btnGiveUp.Location = new System.Drawing.Point(216, 84);
             this.btnGiveUp.Name = "btnGiveUp";
             this.btnGiveUp.Size = new System.Drawing.Size(133, 30);
-            this.btnGiveUp.TabIndex = 24;
+            this.btnGiveUp.TabIndex = 2;
             this.btnGiveUp.Text = "Give up";
             this.btnGiveUp.UseVisualStyleBackColor = true;
             this.btnGiveUp.Click += new System.EventHandler(this.btnGiveUp_Click);
@@ -321,7 +321,7 @@
             this.showRule.Location = new System.Drawing.Point(499, 84);
             this.showRule.Name = "showRule";
             this.showRule.Size = new System.Drawing.Size(133, 30);
-            this.showRule.TabIndex = 25;
+            this.showRule.TabIndex = 4;
             this.showRule.Text = "How To Play";
             this.showRule.UseVisualStyleBackColor = true;
             this.showRule.Click += new System.EventHandler(this.showRule_Click);
@@ -333,7 +333,7 @@
             this.btnSolved.Location = new System.Drawing.Point(360, 84);
             this.btnSolved.Name = "btnSolved";
             this.btnSolved.Size = new System.Drawing.Size(133, 30);
-            this.btnSolved.TabIndex = 26;
+            this.btnSolved.TabIndex = 3;
             this.btnSolved.Text = "Solved!";
             this.btnSolved.UseVisualStyleBackColor = true;
             this.btnSolved.Click += new System.EventHandler(this.btnSolved_Click);
@@ -371,6 +371,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "HaNoiTowerGame";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tháp Hà Nội";
             ((System.ComponentModel.ISupportInitialize)(this.disk8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.disk7)).EndInit();

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -117,15 +118,18 @@ namespace HaNoiTowerGame
 
         private async void btnSolved_Click(object sender, EventArgs e)
         {
+            Thread.Sleep(100);
             timer1.Stop();
+            btnSolved.Enabled = false;
             time = new TimeSpan(0);
             moveCount = 0;
             foreach (PictureBox disk in disks)
             {
                 disk.Visible = false;
             }
-
+            
             time = new TimeSpan(0);
+
             moveCount = 0;
             
             disksA.Clear();
@@ -133,6 +137,9 @@ namespace HaNoiTowerGame
             disksC.Clear();
 
             int x = RodA.Location.X, y = FIRSTY;
+
+            
+
             for (int i = 0; i <= (int)level.Value - 1; i++, y -= DISKHEIGHT)
             {
                 disks[i].Location = new Point(x, y);
@@ -141,8 +148,12 @@ namespace HaNoiTowerGame
             }
 
             timer1.Start();
+
+            
+
             HanoiSolver solver = new HanoiSolver(disksA, disksB, disksC, this);
             await solver.SolveAsync((int)level.Value);
+            timer1.Stop();
             lblMove.Text = $"Move: {solver.Count()}";
         }
 
